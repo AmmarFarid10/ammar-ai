@@ -1,0 +1,1 @@
+{"name":"localai","private":true,"version":"1.0.0","type":"module","scripts":{"build":"vite build","dev":"vite --host 127.0.0.1"},"dependencies":{"react":"19.2.0","react-dom":"19.2.0"},"devDependencies":{"@playwright/test":"1.56.1","vite":"6.4.5"}}

@@ -1,0 +1,16 @@
+.venv/
+.env
+.env.*
+!.env.example
+.DS_Store
+*.log
+playwright-report/
+*.sqlite3*
+__pycache__/
+.pytest_cache/
+frontend/node_modules/
+frontend/dist/
+test-results/
+deploy/cloudflared.yml
+.runtime/
+data/

@@ -1,0 +1,9 @@
+# Replace these values after creating a named tunnel.
+tunnel: YOUR-TUNNEL-UUID
+credentials-file: /Users/YOUR_USERNAME/.cloudflared/YOUR-TUNNEL-UUID.json
+ingress:
+  - hostname: chat.example.com
+    service: http://127.0.0.1:8000
+    originRequest:
+      httpHostHeader: chat.example.com
+  - service: http_status:404

@@ -30,7 +30,7 @@ Prerequisites: Docker Desktop, Python 3.12+, uv, Node 22+ and npm for local deve
 
 ```sh
 uv venv --python 3.12
-uv pip install -r requirements.txt
+uv pip install -r requirements.lock
 npm ci --prefix frontend
 npm run build --prefix frontend
 cp .env.example .env
@@ -145,3 +145,6 @@ To verify clean final-answer delivery through the actual public app:
 ```sh
 npx --prefix frontend playwright test --config frontend/playwright.config.js final-answer.spec.js
 ```
+
+## Portfolio review — 3 November 2026
+Malformed or negative Content-Length now returns HTTP 400. Backend regression suite: 14 tests passed on Python 3.12 with the patched lockfile. CI runs backend checks; browser, Docker and live Ollama tests were not rerun in this review. requirements.lock is the reproducible dependency snapshot.

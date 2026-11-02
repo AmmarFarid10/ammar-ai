@@ -9,8 +9,8 @@ RUN npm run build
 FROM python:3.12-slim AS runtime
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
 WORKDIR /app
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt && useradd --uid 1000 --create-home app
+COPY requirements.lock ./
+RUN pip install --no-cache-dir -r requirements.lock && useradd --uid 1000 --create-home app
 COPY app ./app
 COPY scripts/invite.py ./scripts/invite.py
 COPY --from=frontend /build/dist ./frontend/dist

@@ -197,3 +197,9 @@ def test_thinking_only_model_separates_reasoning(env, monkeypatch, show_thinking
     assert events[0]['phase']=='thinking'
     assert ('PRIVATE REASONING' in result.text) is show_thinking
     assert events[-1]['done']
+
+@pytest.mark.parametrize('value', ['invalid', '-1'])
+def test_invalid_content_length_is_rejected(env, value):
+    _, client = env
+    response = client.post('/api/login', content='{}', headers={'content-length': value})
+    assert response.status_code == 400

@@ -1,6 +1,6 @@
-fastapi==0.121.0
-uvicorn==0.38.0
+fastapi>=0.156.7,<0.157
+uvicorn>=0.54,<0.55
 httpx==0.28.1
 argon2-cffi==25.1.0
-python-dotenv==1.2.1
-pytest==8.4.2
+python-dotenv>=1.2.2,<2
+pytest>=9.0.3,<10

@@ -72,8 +72,15 @@ async def security(request: Request, call_next):
         return Response('Invalid origin', status_code=403)
     if request.url.path.startswith('/api/'):
         length = request.headers.get('content-length')
-        if length and int(length) > 65536:
-            return Response('Request too large', status_code=413)
+        if length:
+            try:
+                declared_size = int(length)
+            except ValueError:
+                return Response('Invalid content length', status_code=400)
+            if declared_size < 0:
+                return Response('Invalid content length', status_code=400)
+            if declared_size > 65536:
+                return Response('Request too large', status_code=413)
         body = bytearray()
         async for chunk in request.stream():
             body.extend(chunk)
